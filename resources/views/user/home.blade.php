@@ -27,43 +27,33 @@
 
     {{-- ================= HEADER ================= --}}
     <header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-neutral-100">
-        <div class="max-w-7xl mx-auto px-6 lg:px-10 py-4 flex items-center gap-6">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 py-4 flex items-center justify-between gap-4">
+            {{-- Logo --}}
             <h1 class="font-extrabold text-xl tracking-tight shrink-0">TAKE AND GO</h1>
 
-            {{-- Search bar --}}
-            <div class="flex-1 flex items-center gap-2 bg-neutral-100 rounded-full px-5 py-2.5 max-w-xl">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-neutral-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <circle cx="11" cy="11" r="7"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                <input
-                    type="text"
-                    placeholder="iphone 17 promax 2 tb cash no cicil..."
-                    class="bg-transparent outline-none text-sm text-neutral-600 placeholder-neutral-400 w-full"
-                >
-                <button type="button" aria-label="Riwayat pencarian" class="shrink-0 text-neutral-400 hover:text-neutral-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            {{-- Container Search Bar (Full Lebar) + Tombol Jam --}}
+            <div class="flex-1 flex items-center gap-3">
+                {{-- Kotak Pencarian --}}
+                <div class="flex-1 flex items-center gap-2 bg-neutral-100 rounded-full px-5 py-2.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-neutral-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input
+                        type="text"
+                        placeholder="iphone 17 promax 2 tb cash no cicil..."
+                        class="bg-transparent outline-none text-sm text-neutral-600 placeholder-neutral-400 w-full"
+                    >
+                </div>
+
+                {{-- Tombol Jam Terpisah di Samping Kanan Kotak --}}
+                <button type="button" aria-label="Riwayat pencarian" class="shrink-0 p-2.5 text-neutral-500 hover:text-neutral-800 bg-neutral-100 hover:bg-neutral-200 rounded-full transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="9"></circle>
                         <polyline points="12 7 12 12 15 14"></polyline>
                     </svg>
                 </button>
             </div>
-
-            {{-- Nav kategori utama --}}
-            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-neutral-700 ml-auto">
-                <button type="button" class="flex items-center gap-1 hover:text-neutral-900">
-                    All item
-                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </button>
-                <button type="button" class="flex items-center gap-1 hover:text-neutral-900">
-                    Electronics
-                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </button>
-                <button type="button" class="flex items-center gap-1 hover:text-neutral-900">
-                    Sports
-                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </button>
-            </nav>
 
             {{-- Icon menu buat mobile --}}
             <button type="button" class="md:hidden shrink-0" aria-label="Menu">
@@ -87,13 +77,13 @@
                 {{-- Lingkaran kuning di belakang speaker (kanan) --}}
                 <div class="accent absolute -right-10 lg:right-4 -top-16 w-52 h-52 lg:w-72 lg:h-72 rounded-full z-0 pointer-events-none"></div>
 
-                {{-- Dekorasi kamera kiri --}}
+                {{-- Dekorasi speaker kiri --}}
                 <img
                     src="images/speaker.png"
                     alt="speaker"
                     class="absolute left-0 lg:left-8 bottom-0 w-40 lg:w-64 h-40 lg:h-64 object-contain drop-shadow-2xl select-none pointer-events-none hidden sm:block"
                 >
-                {{-- Dekorasi speaker kanan --}}
+                {{-- Dekorasi kamera kanan --}}
                 <img
                     src="images/kamera.png"
                     alt="Kamera"
@@ -111,9 +101,9 @@
             </div>
         </section>
 
-        {{-- ================= FILTER KATEGORI (PILL) ================= --}}
+        {{-- ================= FILTER KATEGORI (PILL - POSITION CENTER) ================= --}}
         <section class="mt-8">
-            <div class="flex gap-2 overflow-x-auto scrollbar-none pb-1">
+            <div class="flex justify-center items-center gap-3 overflow-x-auto scrollbar-none pb-1">
                 @php
                     $categories = ['All item', 'Sports', 'Laboratorium', 'Electronics', 'Cleaning'];
                     $active = $active ?? 'All item';
@@ -122,8 +112,8 @@
                 @foreach ($categories as $category)
                     <button
                         type="button"
-                        class="shrink-0 px-5 py-2 rounded-full text-sm font-medium whitespace-nowrap transition
-                            {{ $category === $active ? 'accent text-neutral-900' : 'bg-neutral-200 text-neutral-600 hover:bg-neutral-300' }}"
+                        class="shrink-0 px-6 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition shadow-sm
+                            {{ $category === $active ? 'accent text-neutral-900 font-semibold' : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200' }}"
                     >
                         {{ $category }}
                     </button>
@@ -137,7 +127,7 @@
                 @php
                     $products = $products ?? [
                         ['category' => 'Electronics',  'name' => 'JBL speaker blends',       'stock' => '67 tersedia',  'img' => 'https://placehold.co/400x300/222222/ffffff?text=JBL+Speaker'],
-                        ['category' => 'Laboratorium',  'name' => 'Mikroskop Bk',              'stock' => '6 tersedia',   'img' => 'https://placehold.co/400x300/dbe9f4/1a1a1a?text=Mikroskop'],
+                        ['category' => 'Laboratorium', 'name' => 'Mikroskop Bk',              'stock' => '6 tersedia',   'img' => 'https://placehold.co/400x300/dbe9f4/1a1a1a?text=Mikroskop'],
                         ['category' => 'Electronics',  'name' => 'Sony headphones',           'stock' => '21 tersedia',  'img' => 'https://placehold.co/400x300/3a0d14/ffffff?text=Headphones'],
                         ['category' => 'Cleaning',     'name' => 'Cordless Vacuum Cleaner',   'stock' => '9 tersedia',   'img' => 'https://placehold.co/400x300/dfe6ea/1a1a1a?text=Vacuum'],
                         ['category' => 'Electronics',  'name' => 'iPhone 17 Pro Max',         'stock' => '32 tersedia',  'img' => 'https://placehold.co/400x300/b3502a/ffffff?text=iPhone'],
