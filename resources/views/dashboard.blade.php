@@ -3,16 +3,6 @@
 @section('page-css')
     <link rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
 @endsection
-<!-- Tombol Ikon Jam (Riwayat) -->
-<a
-    href="{{ url('/riwayat') }}"
-    class="w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition shrink-0"
-    title="Riwayat Peminjaman"
->
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-</a>
 @section('main')
 <div class="page-heading">
     <div class="page-title">
