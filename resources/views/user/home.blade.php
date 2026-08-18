@@ -116,38 +116,98 @@
         <section class="mt-8">
             <div class="flex justify-center items-center gap-3 overflow-x-auto scrollbar-none pb-1">
                 @php
-                    $categories = ['All item', 'Sports', 'Laboratorium', 'Electronics', 'Cleaning'];
-                    $active = $active ?? 'All item';
-                @endphp
+    $categories = ['All item', 'Sports', 'Laboratorium', 'Electronics', 'Cleaning'];
+@endphp
 
-                @foreach ($categories as $category)
-                    <button
-                        type="button"
-                        class="shrink-0 px-6 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition shadow-sm
-                            {{ $category === $active ? 'accent text-neutral-900 font-semibold' : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200' }}"
-                    >
-                        {{ $category }}
-                    </button>
-                @endforeach
-            </div>
+<div class="flex justify-center items-center gap-3 overflow-x-auto scrollbar-none pb-1">
+    @foreach ($categories as $category)
+        <a
+            href="/home?category={{ urlencode($category) }}"
+            class="shrink-0 px-6 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition shadow-sm
+            {{ $category === request('category', 'All item')
+                ? 'accent text-neutral-900 font-semibold'
+                : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200' }}"
+        >
+            {{ $category }}
+        </a>
+    @endforeach
+</div>
         </section>
 
         {{-- ================= GRID PRODUK ================= --}}
         <section class="mt-6 pb-14">
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-5">
                 @php
-                    $products = $products ?? [
-                        ['category' => 'Electronics',  'name' => 'JBL speaker blends',       'stock' => '67 tersedia',  'img' => 'https://placehold.co/400x300/222222/ffffff?text=JBL+Speaker'],
-                        ['category' => 'Laboratorium', 'name' => 'Mikroskop Bk',              'stock' => '6 tersedia',   'img' => 'https://placehold.co/400x300/dbe9f4/1a1a1a?text=Mikroskop'],
-                        ['category' => 'Electronics',  'name' => 'Sony headphones',           'stock' => '21 tersedia',  'img' => 'https://placehold.co/400x300/3a0d14/ffffff?text=Headphones'],
-                        ['category' => 'Cleaning',     'name' => 'Cordless Vacuum Cleaner',   'stock' => '9 tersedia',   'img' => 'https://placehold.co/400x300/dfe6ea/1a1a1a?text=Vacuum'],
-                        ['category' => 'Electronics',  'name' => 'iPhone 17 Pro Max',         'stock' => '32 tersedia',  'img' => 'https://placehold.co/400x300/b3502a/ffffff?text=iPhone'],
-                        ['category' => 'Sports',       'name' => 'Real Madrid Home Jersey',   'stock' => '20 tersedia',  'img' => 'https://placehold.co/400x300/f2f2f2/1a1a1a?text=Jersey'],
-                        ['category' => 'Sports',       'name' => 'Adidas Tiro Pro',           'stock' => '147 tersedia', 'img' => 'https://placehold.co/400x300/dedede/1a1a1a?text=Ball'],
-                        ['category' => 'Sports',       'name' => "Loro Piana's paddleball",   'stock' => '15 tersedia',  'img' => 'https://placehold.co/400x300/e8ded0/1a1a1a?text=Paddle'],
-                        ['category' => 'Electronics',  'name' => 'Samsung galaxy S25 Ultra',  'stock' => '7 tersedia',   'img' => 'https://placehold.co/400x300/1a1a1a/ffffff?text=Galaxy+S25'],
-                    ];
-                @endphp
+    $products = [
+    // ELECTRONICS
+    [
+        'category' => 'Electronics',
+        'name' => 'JBL speaker blends',
+        'stock' => '67 tersedia',
+        'img' => '...'
+    ],
+
+    [
+        'category' => 'Electronics',
+        'name' => 'Sony headphones',
+        'stock' => '21 tersedia',
+        'img' => '...'
+    ],
+
+    [
+        'category' => 'Electronics',
+        'name' => 'iPhone 17 Pro Max',
+        'stock' => '32 tersedia',
+        'img' => '...'
+    ],
+
+    [
+        'category' => 'Electronics',
+        'name' => 'Samsung galaxy S25 Ultra',
+        'stock' => '7 tersedia',
+        'img' => '...'
+    ],
+
+    // CLEANING
+    [
+        'category' => 'Cleaning',
+        'name' => 'Cordless Vacuum Cleaner',
+        'stock' => '9 tersedia',
+        'img' => '...'
+    ],
+
+    // SPORTS
+    [
+        'category' => 'Sports',
+        'name' => 'Real Madrid Home Jersey',
+        'stock' => '20 tersedia',
+        'img' => '...'
+    ],
+
+    [
+        'category' => 'Sports',
+        'name' => 'Adidas Tiro Pro',
+        'stock' => '147 tersedia',
+        'img' => '...'
+    ],
+
+    // LABORATORIUM
+    [
+        'category' => 'Laboratorium',
+        'name' => 'Mikroskop Bk',
+        'stock' => '6 tersedia',
+        'img' => '...'
+    ],
+];
+
+    $active = request('category', 'All item');
+
+    if ($active !== 'All item') {
+        $products = array_filter($products, function ($product) use ($active) {
+            return $product['category'] === $active;
+        });
+    }
+@endphp
 
                 @foreach ($products as $product)
                     <div class="group bg-white rounded-2xl border border-neutral-100 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col">
