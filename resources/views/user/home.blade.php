@@ -34,16 +34,29 @@
             {{-- Container Search Bar (Full Lebar) + Tombol Jam --}}
             <div class="flex-1 flex items-center gap-3">
                 {{-- Kotak Pencarian --}}
-                <div class="flex-1 flex items-center gap-2 bg-neutral-100 rounded-full px-5 py-2.5">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-neutral-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="7"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                    <input
-                        type="text"
-                        placeholder="iphone 17 promax 2 tb cash no cicil..."
-                        class="bg-transparent outline-none text-sm text-neutral-600 placeholder-neutral-400 w-full"
-                    >
+                <form action="/home" method="GET" class="flex-1 flex items-center gap-2 bg-neutral-100 rounded-full px-5 py-2.5">
+
+    <svg xmlns="http://www.w3.org/2000/svg"
+         class="w-4 h-4 text-neutral-400 shrink-0"
+         fill="none"
+         viewBox="0 0 24 24"
+         stroke="currentColor"
+         stroke-width="2">
+        <circle cx="11" cy="11" r="7"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+
+    <input
+        type="text"
+        name="search"
+        value="{{ request('search') }}"
+        placeholder="Cari barang..."
+        class="bg-transparent outline-none text-sm text-neutral-600 placeholder-neutral-400 w-full"
+    >
+
+    <button type="submit" class="hidden"></button>
+
+</form>
                 </div>
 
                 {{-- Tombol Jam Terpisah di Samping Kanan Kotak --}}
@@ -202,11 +215,18 @@
 
     $active = request('category', 'All item');
 
-    if ($active !== 'All item') {
-        $products = array_filter($products, function ($product) use ($active) {
-            return $product['category'] === $active;
-        });
-    }
+if ($active !== 'All item') {
+    $products = array_filter($products, function ($product) use ($active) {
+        return $product['category'] === $active;
+    });
+}
+$search = request('search');
+
+if ($search) {
+    $products = array_filter($products, function ($product) use ($search) {
+        return stripos($product['name'], $search) !== false;
+    });
+}
 @endphp
 
                 @foreach ($products as $product)
