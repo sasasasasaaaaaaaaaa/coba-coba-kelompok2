@@ -47,12 +47,23 @@
                 </div>
 
                 {{-- Tombol Jam Terpisah di Samping Kanan Kotak --}}
-                <button type="button" aria-label="Riwayat pencarian" class="shrink-0 p-2.5 text-neutral-500 hover:text-neutral-800 bg-neutral-100 hover:bg-neutral-200 rounded-full transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="9"></circle>
-                        <polyline points="12 7 12 12 15 14"></polyline>
-                    </svg>
-                </button>
+                <a href="{{ route('riwayat') }}"
+   aria-label="Riwayat pencarian"
+   class="shrink-0 p-2.5 text-neutral-500 hover:text-neutral-800 bg-neutral-100 hover:bg-neutral-200 rounded-full transition inline-flex items-center justify-center">
+
+    <svg xmlns="http://www.w3.org/2000/svg"
+         class="w-5 h-5"
+         fill="none"
+         viewBox="0 0 24 24"
+         stroke="currentColor"
+         stroke-width="2">
+
+        <circle cx="12" cy="12" r="9"></circle>
+        <polyline points="12 7 12 12 15 14"></polyline>
+
+    </svg>
+
+</a>
             </div>
 
             {{-- Icon menu buat mobile --}}
