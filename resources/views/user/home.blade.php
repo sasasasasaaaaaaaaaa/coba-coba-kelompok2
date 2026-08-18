@@ -144,28 +144,28 @@
         'category' => 'Electronics',
         'name' => 'JBL speaker blends',
         'stock' => '67 tersedia',
-        'img' => '...'
+        'img' => asset('images/jblspeaker.jpg')
     ],
 
     [
         'category' => 'Electronics',
         'name' => 'Sony headphones',
         'stock' => '21 tersedia',
-        'img' => '...'
+        'img' => asset('images/headphone.jpg')
     ],
 
     [
         'category' => 'Electronics',
         'name' => 'iPhone 17 Pro Max',
         'stock' => '32 tersedia',
-        'img' => '...'
+        'img' => asset('images/iphone.jpg')
     ],
 
     [
         'category' => 'Electronics',
         'name' => 'Samsung galaxy S25 Ultra',
         'stock' => '7 tersedia',
-        'img' => '...'
+        'img' => asset('images/samsung.jpg')
     ],
 
     // CLEANING
@@ -196,7 +196,7 @@
         'category' => 'Laboratorium',
         'name' => 'Mikroskop Bk',
         'stock' => '6 tersedia',
-        'img' => '...'
+        'img' => asset('images/mikroskop.jpg')
     ],
 ];
 
