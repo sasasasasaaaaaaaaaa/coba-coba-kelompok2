@@ -173,7 +173,7 @@
         'category' => 'Cleaning',
         'name' => 'Cordless Vacuum Cleaner',
         'stock' => '9 tersedia',
-        'img' => '...'
+        'img' => asset('images/vacuum.jpg')
     ],
 
     // SPORTS
@@ -181,14 +181,14 @@
         'category' => 'Sports',
         'name' => 'Real Madrid Home Jersey',
         'stock' => '20 tersedia',
-        'img' => '...'
+        'img' => asset('images/jersey.jpg')
     ],
 
     [
         'category' => 'Sports',
         'name' => 'Adidas Tiro Pro',
         'stock' => '147 tersedia',
-        'img' => '...'
+        'img' => asset('images/adidas.jpg')
     ],
 
     // LABORATORIUM
